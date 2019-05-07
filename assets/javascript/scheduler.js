@@ -31,7 +31,7 @@ $("#submit").on("click", function(event){
     startTime = $('#first-train-time').val();
     frequency = $("#frequency").val();
 
-    console.log(name, destination, startTime, frequency);
+   
    // let newRow = 
         // `<tr>
         //     <th scope="row">1</th>
@@ -62,8 +62,17 @@ $("#submit").on("click", function(event){
    var trainDestination = childSnapshot.val().destination;
    var startTime = childSnapshot.val().startTime;
    var frequency = childSnapshot.val().frequency;
+   //////////////////////////////
+//    var currentTime = moment.unix().format("HH");
+// console.log("currentTime: " + currentTime);
+//     var newStartTime = moment(startTime, "HH");
+//     console.log("newStartTime: " + newStartTime);
 
-   console.log("::" + trainName, trainDestination, startTime, frequency);
+//     var nextArrival = moment.add(currentTime, frequency);
+//     console.log("nextArrival: " + nextArrival);
+////////////////////////////////////////////////////////
+
+
 //   var newDateStart = moment(dateStart, "YYYY-MM-DD");
   
 //   monthsWorked = moment.diff(moment(startDate, "X"), "months");
