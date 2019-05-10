@@ -12,7 +12,7 @@ $(document).ready(function () {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
-  database = firebase.database();
+ var database = firebase.database();
 
 
 
@@ -37,7 +37,8 @@ $("#submit").on("click", function(event){
           name,
           destination,
           startTime,
-          frequency
+          frequency,
+          dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
 
  $('form').trigger('reset');
@@ -57,19 +58,19 @@ $("#submit").on("click", function(event){
         var minAway;
         // Change year so first train comes before now
         var firstTrainNew = moment(childSnapshot.val().startTime, "hh:mm").subtract(1, "years");
-        console.log("firstTrainNew: " + firstTrainNew);
+        
         // Difference between the current and firstTrain
         var diffTime = moment().diff(moment(firstTrainNew), "minutes");
-        console.log("diffTime: " + diffTime);
+        
         var remainder = diffTime % childSnapshot.val().frequency;
-        console.log("remainder: " + remainder);
+        
         // Minutes until next train
         var minAway = childSnapshot.val().frequency - remainder;
-        console.log("minAway: " + minAway);
+       
         // Next train time
         var nextTrain = moment().add(minAway, "minutes");
         nextTrain = moment(nextTrain).format("hh:mm");
-        console.log("nextTrain: " + nextTrain);
+       
   
 // Create the new row
 var newRow = $("<tr>").append(
