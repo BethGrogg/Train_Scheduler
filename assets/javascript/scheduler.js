@@ -27,23 +27,11 @@ $("#submit").on("click", function(event){
 
     name = $("#name").val();
     destination =$("#destination").val();
- //    startDate = moment($("#start-input").val().trim(), "MM/DD/YYYY").format("X");
+ 
     startTime = $('#first-train-time').val();
     frequency = $("#frequency").val();
-
-   
-   // let newRow = 
-        // `<tr>
-        //     <th scope="row">1</th>
-        //     <td>` + name + `</td>
-        //     <td>` + role + `</td>
-        //     <td>` + startDate + `</td>
-        //     <td>months worked</td>
-            
-        //     <td>` + rate + `</td>
-        //     <td>amount paid</td>
-        //     </tr>`
-        //     $(".table").append(newRow);
+  
+  
 
         database.ref().push( {
           name,
@@ -62,29 +50,34 @@ $("#submit").on("click", function(event){
    var trainDestination = childSnapshot.val().destination;
    var startTime = childSnapshot.val().startTime;
    var frequency = childSnapshot.val().frequency;
-   //////////////////////////////
-//    var currentTime = moment.unix().format("HH");
-// console.log("currentTime: " + currentTime);
-//     var newStartTime = moment(startTime, "HH");
-//     console.log("newStartTime: " + newStartTime);
-
-//     var nextArrival = moment.add(currentTime, frequency);
-//     console.log("nextArrival: " + nextArrival);
-////////////////////////////////////////////////////////
 
 
-//   var newDateStart = moment(dateStart, "YYYY-MM-DD");
+   ///////////////////////////////////////////////////////////
+    var nextArr;
+        var minAway;
+        // Change year so first train comes before now
+        var firstTrainNew = moment(childSnapshot.val().startTime, "hh:mm").subtract(1, "years");
+        console.log("firstTrainNew: " + firstTrainNew);
+        // Difference between the current and firstTrain
+        var diffTime = moment().diff(moment(firstTrainNew), "minutes");
+        console.log("diffTime: " + diffTime);
+        var remainder = diffTime % childSnapshot.val().frequency;
+        console.log("remainder: " + remainder);
+        // Minutes until next train
+        var minAway = childSnapshot.val().frequency - remainder;
+        console.log("minAway: " + minAway);
+        // Next train time
+        var nextTrain = moment().add(minAway, "minutes");
+        nextTrain = moment(nextTrain).format("hh:mm");
+        console.log("nextTrain: " + nextTrain);
   
-//   monthsWorked = moment.diff(moment(startDate, "X"), "months");
-//   console.log(dateStart);
-//   console.log(monthsWorked);
 // Create the new row
 var newRow = $("<tr>").append(
     $("<td>").text(trainName),
     $("<td>").text(trainDestination),
     $("<td>").text(frequency),
-    $("<td>").text(""),
-    $("<td>").text("")
+    $("<td>").text(nextTrain),
+    $("<td>").text(minAway)
     
   );
 

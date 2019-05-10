@@ -9,10 +9,13 @@
     <script src="assets/javascript/scheduler.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./assets/css/materialize.css"  media="screen,projection"/>
      <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
         
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script type="text/javascript" src="./assets/javascript/materialize.js"></script>
 </head>
 
 <body>
@@ -20,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="card">
-                <table class="table" id="train-table">
+                <table class="table" class="striped" id="train-table">
                     <thead>
                         <tr>
                             <th scope="col">Train Name</th>
@@ -31,27 +34,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">Michigan Flyer</td>
-                            <td scope="row">Detroit</td>
-                            <td scope="row">50</td>
-                            <td scope="row"></td>
-                            <td scope="row"></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">C&J</td>
-                            <td scope="row">Boston</td>
-                            <td scope="row">20</td>
-                            <td scope="row"></td>
-                            <td scope="row"></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Peter Pan</td>
-                            <td scope="row">Baltimore</td>
-                            <td scope="row">80</td>
-                            <td scope="row"></td>
-                            <td scope="row"></td>
-                        </tr>
+                       
                     </tbody>
                 </table>
             </div>
@@ -69,7 +52,7 @@
                         <input type="text" class="form-control" id="destination" placeholder="">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">First Train Time:</label>
+                        <label for="exampleFormControlInput1">First Train Time (in military time):</label>
                         <input type="text" class="form-control" id="first-train-time" placeholder="">
                     </div>
                     <div class="form-group">
