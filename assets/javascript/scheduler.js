@@ -14,8 +14,6 @@ $(document).ready(function () {
 
  var database = firebase.database();
 
-
-
 var name = "";
 var destination = "";
 var startTime="";
@@ -27,12 +25,9 @@ $("#submit").on("click", function(event){
 
     name = $("#name").val();
     destination =$("#destination").val();
- 
     startTime = $('#first-train-time').val();
     frequency = $("#frequency").val();
   
-  
-
         database.ref().push( {
           name,
           destination,
@@ -41,7 +36,7 @@ $("#submit").on("click", function(event){
           dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
 
- $('form').trigger('reset');
+     $('form').trigger('reset');
 
 });
 
@@ -53,9 +48,8 @@ $("#submit").on("click", function(event){
    var frequency = childSnapshot.val().frequency;
 
 
-   ///////////////////////////////////////////////////////////
-    var nextArr;
-        var minAway;
+   
+        
         // Change year so first train comes before now
         var firstTrainNew = moment(childSnapshot.val().startTime, "hh:mm").subtract(1, "years");
         
@@ -73,7 +67,7 @@ $("#submit").on("click", function(event){
        
   
 // Create the new row
-var newRow = $("<tr>").append(
+    var newRow = $("<tr>").append(
     $("<td>").text(trainName),
     $("<td>").text(trainDestination),
     $("<td>").text(frequency),
@@ -91,7 +85,4 @@ var newRow = $("<tr>").append(
    console.log(errorObject.code);
   });
 
-// function renderTableData() {
-
-//}
 });
