@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/scheduler.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="./assets/css/materialize.css"  media="screen,projection"/>
@@ -18,12 +19,44 @@
     <script type="text/javascript" src="./assets/javascript/materialize.js"></script>
 </head>
 
-<body>
+<body class="blue lighten-3">
+        <nav>
+                <div class="nav-wrapper indigo shadow">
+                        
+                  <a href="#" class="brand-logo center"><i class="material-icons">train</i>Train Scheduler</a>
+                 
+                </div>
+              </nav>
 
     <div class="container">
         <div class="row">
-            <div class="card">
-                <table class="table" class="striped" id="train-table">
+                <div class="col s3">
+                        <div class="card adding-new indigo white-text z-depth-3">
+                            <form>
+                                <div class="form-group">
+                                    <label class="white-text" for="exampleFormControlInput1">Train Name:</label>
+                                    <input type="text" class="form-control white-text" id="name"
+                                        placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="white-text" for="exampleFormControlInput1">Destination:</label>
+                                    <input type="text" class="form-control white-text" id="destination" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="white-text" for="exampleFormControlInput1">First Train Time (in military time):</label>
+                                    <input type="text" class="form-control white-text" id="first-train-time" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label class="white-text" for="exampleFormControlInput1">Frequency (in minutes):</label>
+                                    <input type="number" class="form-control white-text" id="frequency" placeholder=" ">
+                                </div>
+                                <button type="submit" class="btn grey darken-4" id="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+            <div class="col s9">
+            <div class="card display-info z-depth-3">
+                <table class="table striped" id="train-table">
                     <thead>
                         <tr>
                             <th scope="col">Train Name</th>
@@ -39,29 +72,9 @@
                 </table>
             </div>
         </div>
-        <div class="row">
-            <div class="card">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Train Name:</label>
-                        <input type="text" class="form-control" id="name"
-                            placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Destination:</label>
-                        <input type="text" class="form-control" id="destination" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">First Train Time (in military time):</label>
-                        <input type="text" class="form-control" id="first-train-time" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Frequency (in minutes):</label>
-                        <input type="number" class="form-control" id="frequency" placeholder=" ">
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-                </form>
-            </div>
+       
+        
+           
     </div>
 </body>
 
