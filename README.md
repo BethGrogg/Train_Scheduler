@@ -3,4 +3,6 @@ This application allows the user to add trains along with their destination, sta
 
 This application utilizes moment.js to determine times and materialize to build the "look and feel" of the site.
 
+![Train Scheduler](train-scheduler.png)
+
 Deployed project: https://bethgrogg.github.io/Train_Scheduler/
